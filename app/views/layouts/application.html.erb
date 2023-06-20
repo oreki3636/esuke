@@ -17,7 +17,7 @@
 
       <ul class="navbar">
         <% if user_signed_in? %>
-          <li><%= link_to "top", top_path %></li>
+          <li><%= link_to "top", mypage_path %></li>
           <li><%= link_to "プロフィール情報", user_path(current_user.id) %></li>
           <li><%= link_to "友達一覧" %></li>
           <li><%= link_to "about" %> </li>

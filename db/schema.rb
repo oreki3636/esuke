@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2023_06_16_053730) do
   create_table "points", force: :cascade do |t|
     t.integer "user_id"
     t.integer "ranking_id"
-    t.integer "point"
+    t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

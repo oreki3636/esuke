@@ -3,7 +3,7 @@ class CreatePoints < ActiveRecord::Migration[6.1]
     create_table :points do |t|
       t.integer :user_id
       t.integer :ranking_id
-      t.integer :point
+      t.integer :quantity
 
       t.timestamps
     end

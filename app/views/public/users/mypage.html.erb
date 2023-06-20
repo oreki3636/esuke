@@ -1,0 +1,22 @@
+<h1>image</h1>
+
+<p>名前</p>
+<%= @user.name %>
+
+<p>自己紹介</p>
+<%= @user.introduction %>
+
+
+
+<h2>カレンダー投稿</h2>
+
+<%= month_calendar do |date| %>
+  <%= link_to new_path do %>
+  <%= date.day %>
+  <% end %>
+<% end %>
+
+<h2>ランキング</h2>
+
+
+
