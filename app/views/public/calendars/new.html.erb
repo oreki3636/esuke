@@ -1,0 +1,15 @@
+<h1>To Doリスト投稿画面</h1>
+<%= form_with model: @calender ,url: mypage_path do |f| %>
+  <div class="form-group">
+    <%= f.text_field :todo_list %>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :todo_list %>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :todo_list %>
+  </div>
+  <div class="form-group">
+    <%=f.submit"投稿" %>
+  </div>
+<% end %>
