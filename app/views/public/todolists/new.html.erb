@@ -1,0 +1,6 @@
+<h1>ToDoリスト投稿</h1>
+
+<%= form_with model: @todolist ,url: users_mypage_path do |f| %>
+  <%= f.text_field :list %><br>
+  <%= f.submit "書き込み" %>
+<% end %>

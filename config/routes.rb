@@ -11,12 +11,13 @@ Rails.application.routes.draw do
    scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    get 'users/mypage' => "users#mypage",as: 'mypage'
+    get 'users/mypage' => 'users#mypage',as: 'mypage'
+    post 'users/mypage' => 'users#mypage'
+    get 'users//show' => 'users'
     resources :users,only: [:index,:show]
     get 'users/mypage/edit' => 'users#edit',as: 'edit'
     get 'points/get' => 'points#get',as: 'get'
-    get 'calendars/new' => 'calendars#new',as: 'new'
-    get 'rankings/get' => 'rankings#get',as: 'ranking_get'
+    resources :todolists,only: [:new,:create]
   end
 
   namespace :admin do

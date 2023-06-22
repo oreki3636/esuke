@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_06_16_053730) do
+ActiveRecord::Schema.define(version: 2023_06_21_121334) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,25 +52,16 @@ ActiveRecord::Schema.define(version: 2023_06_16_053730) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "calendars", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "schedule"
-    t.string "todo_list"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "points", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "ranking_id"
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "rankings", force: :cascade do |t|
-    t.string "rank"
-    t.string "rank_name"
+  create_table "todolists", force: :cascade do |t|
+    t.string "list"
+    t.boolean "check"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -84,6 +75,7 @@ ActiveRecord::Schema.define(version: 2023_06_16_053730) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.boolean "is_deleted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
