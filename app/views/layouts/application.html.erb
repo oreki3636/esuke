@@ -18,11 +18,11 @@
       <ul class="navbar">
         <% if user_signed_in? %>
           <li><%= link_to "top", mypage_path %></li>
-          <li><%= link_to "プロフィール情報", user_path(current_user.id) %></li>
+          <li><%= link_to "プロフィール編集", mypage_show_path %></li>
           <li><%= link_to "友達一覧" %></li>
           <li><%= link_to "about" %> </li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to "退会" %></li>
+          <li><%= link_to "退会", unsubscribe_path %></li>
         <% elsif admin_signed_in? %>
           <li><%= link_to "top",admin_root_path %></li>
           <li><%= link_to "ログアウト",destroy_admin_session_path, method: :delete %></li>

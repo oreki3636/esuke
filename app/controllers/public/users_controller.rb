@@ -4,7 +4,17 @@ class Public::UsersController < ApplicationController
   end
 
   def show
+    @user=current_user
 
+  end
+
+  def update
+    @user=current_user
+    if @user.update(user_params)
+      redirect_to mypage_path
+    else
+      render :edit
+    end
   end
 
   def mypage
@@ -17,6 +27,17 @@ class Public::UsersController < ApplicationController
     #pluck(:user_id))ユーザー情報のみ数字で取り出す
     #User.find()#上記pluckで取り出された数字をUserのidとすることで訪問数順にユーザー情報を取得する。
 
-  def edit
+  def unsubscribe
+    @user=current_user
+  end
+
+  def withdraw
+    @user=current_user
+
+  end
+
+  protected
+  def user_params
+    params.require(:user).permit(:name,:introduction,:email,:telephone_number)
   end
 end

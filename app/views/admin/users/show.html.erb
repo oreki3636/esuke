@@ -1,18 +1,20 @@
 <h1>image</h1>
-<p>会員ID</p>
+<label>会員ID</label>
 <%= @user.id %>
 
-<p>登録日</p>
+<label>登録日</label>
 <%= @user.created_at %>
 
-<p>名前</p>
+<label>名前</label>
 <%= @user.name %>
 
-<p>メールアドレス</p>
+<label>メールアドレス</label>
 <%= @user.email %>
 
-<p>電話番号</p>
+<label>電話番号</label>
 <%= @user.telephone_nember %>
 
 
 <%= link_to "管理者TOPへ", admin_root_path %>
+
+

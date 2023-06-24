@@ -12,12 +12,15 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     get 'users/mypage' => 'users#mypage',as: 'mypage'
-    post 'users/mypage' => 'users#mypage'
-    get 'users//show' => 'users'
+    #post 'users/mypage' => 'users#mypage'
+    get 'users/mypage/show' => 'users#show',as: 'mypage_show'
+    get 'users/unsubscribe' => 'users#unsubscribe',as: 'unsubscribe'
     resources :users,only: [:index,:show]
     get 'users/mypage/edit' => 'users#edit',as: 'edit'
     get 'points/get' => 'points#get',as: 'get'
     resources :todolists,only: [:new,:create]
+    patch 'users/mypage' => 'users#update',as: 'mypage_update'
+    patch 'users/withdraw' => 'users#withdraw',as: 'withdraw'
   end
 
   namespace :admin do
