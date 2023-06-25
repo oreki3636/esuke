@@ -54,14 +54,17 @@ ActiveRecord::Schema.define(version: 2023_06_21_121334) do
 
   create_table "points", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "quantity"
+    t.integer "todolist_id"
+    t.boolean "done_flg", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "todolists", force: :cascade do |t|
+    t.integer "user_id"
     t.string "list"
-    t.boolean "check"
+    t.boolean "check", default: false
+    t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

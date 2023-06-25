@@ -4,8 +4,7 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @user=current_user
-
+    @user = current_user
   end
 
   def update
@@ -18,8 +17,9 @@ class Public::UsersController < ApplicationController
   end
 
   def mypage
-    @user=current_user
-
+    @todo = Todolist.new
+    @user = current_user
+    @todolists = @user.todolists
   end
     #Userpoint.group(:user_id)#まず、ユーザー情報の番号(note_id)が同じものにグループを分ける
     #order('count(point_id) desc')ポイントの多い順に並べる
@@ -33,6 +33,9 @@ class Public::UsersController < ApplicationController
 
   def withdraw
     @user=current_user
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
 
   end
 

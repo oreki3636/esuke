@@ -6,13 +6,30 @@
 <p>自己紹介</p>
 <%= @user.introduction %>
 
+<h2>新規登録</h2>
+<%= form_with model: @todo, url: todolists_path do |f| %>
+  <%= f.text_field :list %>
+  <%= f.submit "書き込み" %>
+<% end %>
+<small>予定は自動的に翌日にセットされます。</small>
 
+<h2>現在のEスケポイント</h2>
+<%= @user.points.count %>
 
 <h2>カレンダー投稿</h2>
 
-<%= month_calendar do |date| %>
-  <%= link_to new_todolist_path do %>
-  　<%= date.day %>
+<%= month_calendar(attribute: :date, end_attribute: :date, events: @todolists) do |date, todos| %>
+  <%= link_to todolist_path(date) do %>
+    <%= date.day %>
+  <% end %>
+  <% todos.each do |todo| %>
+    <div>
+      <% if todo.check %>
+        <strike><%= todo.list %></strike>
+      <% else %>
+        <%= todo.list %>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
 

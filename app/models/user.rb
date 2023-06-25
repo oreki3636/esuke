@@ -5,4 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :points
   has_many :todolists
+
+  def active_for_authentication?
+    super && !is_deleted
+  end
+
 end

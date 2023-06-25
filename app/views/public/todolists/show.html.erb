@@ -1,0 +1,15 @@
+<h2><%= params[:id].to_date.strftime('%Y/%m/%d') %>のEスケ一覧</h2>
+
+<ul>
+  <% @todolists.each do |todo| %>
+    <li>
+      <%= link_to todolist_path(todo), method: :patch, data: {confirm: '完了にしますか？'} do %>
+        <% if todo.check %>
+          <strike><%= todo.list %></strike>
+        <% else %>
+          <%= todo.list %>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

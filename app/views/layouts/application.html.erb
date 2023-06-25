@@ -7,6 +7,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -19,8 +20,8 @@
         <% if user_signed_in? %>
           <li><%= link_to "top", mypage_path %></li>
           <li><%= link_to "プロフィール編集", mypage_show_path %></li>
-          <li><%= link_to "友達一覧" %></li>
-          <li><%= link_to "about" %> </li>
+          <li><%= link_to "友達一覧",users_path %></li>
+          <li><%= link_to "about",about_path %> </li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
           <li><%= link_to "退会", unsubscribe_path %></li>
         <% elsif admin_signed_in? %>

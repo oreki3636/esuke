@@ -1,4 +1,5 @@
 class Public::PointsController < ApplicationController
-  def get
+  def index
+    @points = current_user.points.order(created_at: :desc)
   end
 end

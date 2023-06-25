@@ -1,0 +1,16 @@
+<h2>Eスケポイント獲得履歴</h2>
+<%= @points.count %> Point
+<ul>
+  <% @points.each do |point| %>
+      <li>
+        <% if point.done_flg %>
+          タスク "<%= point.todolist.list %>" をクリア！
+        <% else %>
+          タスク "<%= point.todolist.list %>" を作成！
+        <% end %>
+        <small>
+          <%= point.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %>
+        </small>
+      </li>
+  <% end %>
+</ul>

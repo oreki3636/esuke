@@ -16,9 +16,9 @@ Rails.application.routes.draw do
     get 'users/mypage/show' => 'users#show',as: 'mypage_show'
     get 'users/unsubscribe' => 'users#unsubscribe',as: 'unsubscribe'
     resources :users,only: [:index,:show]
+    resources :points
     get 'users/mypage/edit' => 'users#edit',as: 'edit'
-    get 'points/get' => 'points#get',as: 'get'
-    resources :todolists,only: [:new,:create]
+    resources :todolists,only: [:new,:show,:update,:create]
     patch 'users/mypage' => 'users#update',as: 'mypage_update'
     patch 'users/withdraw' => 'users#withdraw',as: 'withdraw'
   end
