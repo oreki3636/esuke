@@ -1,4 +1,5 @@
-<h1>image</h1>
+
+<%= image_tag @user.get_profile_image(100,100) %>
 
 <p>名前</p>
 <%= @user.name %>
@@ -11,14 +12,15 @@
   <%= f.text_field :list %>
   <%= f.submit "書き込み" %>
 <% end %>
-<small>予定は自動的に翌日にセットされます。</small>
+<small>※予定は自動的に翌日にセットされます。</small>
 
 <h2>現在のEスケポイント</h2>
-<%= @user.points.count %>
+<h1><%= @user.points.count %></h1>
+<%= link_to "Eスケポイント履歴を見る",points_path %>
 
-<h2>カレンダー投稿</h2>
-
+<h2>カレンダー</h2>
 <%= month_calendar(attribute: :date, end_attribute: :date, events: @todolists) do |date, todos| %>
+<%#= attribute: :開始時間の属性名, end_attribute: :終了時間の属性名をデータカラムに持たせ%>
   <%= link_to todolist_path(date) do %>
     <%= date.day %>
   <% end %>

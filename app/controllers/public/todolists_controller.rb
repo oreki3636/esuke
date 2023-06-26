@@ -6,6 +6,7 @@ class Public::TodolistsController < ApplicationController
 
   def show
     @todolists = Todolist.where(user_id: current_user.id, date: params[:id])
+    #id以外のカラムの検索条件で、複数の実行結果を取得したい場合・・・where
   end
 
   def update
