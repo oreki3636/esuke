@@ -8,11 +8,16 @@
 
 <p>自己紹介</p>
 <%= @user.introduction %>
-
+<% if Todolist.where(date: Date.current.in_time_zone('Tokyo') + 1.days,
+            user_id: current_user.id
+          ).count < 5 %>
 <h2>新規登録</h2>
 <%= form_with model: @todo, url: todolists_path do |f| %>
   <%= f.text_field :list %>
   <%= f.submit "書き込み" %>
+<% end %>
+<% else %>
+<h3>１日の投稿上限をオーバーしています</h3>
 <% end %>
 <small>※予定は自動的に翌日にセットされます。</small>
 
