@@ -13,12 +13,11 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     get 'users/mypage' => 'users#mypage',as: 'mypage'
     #post 'users/mypage' => 'users#mypage'
-    get 'users/mypage/show' => 'users#show',as: 'mypage_show'
     get 'users/unsubscribe' => 'users#unsubscribe',as: 'unsubscribe'
-    resources :users,only: [:index,:show]
+    resources :users,only: [:index]
     resources :points
-    get 'users/mypage/edit' => 'users#edit',as: 'edit'
-    resources :todolists,only: [:new,:show,:update,:create]
+    get 'users/mypage/edit' => 'users#edit',as: 'edit_user_mypage'
+    resources :todolists,only: [:new,:show,:update,:create,:destroy]
     patch 'users/mypage' => 'users#update',as: 'mypage_update'
     patch 'users/withdraw' => 'users#withdraw',as: 'withdraw'
   end

@@ -1,0 +1,22 @@
+<h2>プロフィール編集</h2>
+
+<%= image_tag @user.get_profile_image(300,300) %>
+
+<%= form_with model: @user, url: mypage_path do |f| %>
+  <%= f.label :アイコン %>
+  <%= f.file_field :profile_image,accept: "image/*" %><br>
+
+  <%= f.label :名前 %>
+  <%= f.text_field :name %><br>
+
+  <%= f.label :自己紹介 %>
+  <%= f.text_area :introduction %><br>
+
+  <%= f.label :メールアドレス %>
+  <%= f.text_field :email %><br>
+
+  <%= f.label :電話番号 %>
+  <%= f.text_field :telephone_number %><br>
+  <%= f.submit "編集する" %>
+
+<% end %>

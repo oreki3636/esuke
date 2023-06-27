@@ -19,9 +19,9 @@
       <ul class="navbar">
         <% if user_signed_in? %>
           <li><%= link_to "マイページ", mypage_path %></li>
-          <li><%= link_to "プロフィール編集", mypage_show_path %></li>
-          <li><%= link_to "友達一覧",users_path %></li>
-          <li><%= link_to "about",about_path %> </li>
+          <li><%= link_to "プロフィール編集", edit_user_mypage_path %></li>
+          <li><%= link_to "友達一覧", users_path %></li>
+          <li><%= link_to "about", about_path %> </li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
           <li><%= link_to "退会", unsubscribe_path %></li>
         <% elsif admin_signed_in? %>

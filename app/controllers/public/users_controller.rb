@@ -1,9 +1,8 @@
 class Public::UsersController < ApplicationController
 
-  def index
-  end
 
-  def show
+
+  def edit
     @user = current_user
   end
 
@@ -17,9 +16,13 @@ class Public::UsersController < ApplicationController
   end
 
   def mypage
-    @todo = Todolist.new
     @user = current_user
     @todolists = @user.todolists
+    @todo = Todolist.new
+    @all_ranks = User.find(Point.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id))
+    # byebug
+
+
   end
     #Userpoint.group(:user_id)#まず、ユーザー情報の番号(note_id)が同じものにグループを分ける
     #order('count(point_id) desc')ポイントの多い順に並べる
