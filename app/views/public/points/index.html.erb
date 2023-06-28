@@ -5,6 +5,8 @@
       <li>
         <% if point.done_flg %>
           タスク "<%= point.todolist.list %>" をクリア！
+        <% elsif point.todolist.list.destroy %>
+          タスク "<%= point.todolist.list %>" を削除しました。
         <% else %>
           タスク "<%= point.todolist.list %>" を作成！
         <% end %>

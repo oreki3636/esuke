@@ -1,5 +1,6 @@
 class Public::TodolistsController < ApplicationController
 
+
   def new
     @todolist=Todolist.new
   end

@@ -3,6 +3,8 @@
 
 <%= image_tag @user.get_profile_image(100,100) %>
 
+<%= link_to "編集", edit_user_mypage_path %>
+
 <p>名前</p>
 <%= @user.name %>
 
@@ -17,7 +19,7 @@
   <%= f.submit "書き込み" %>
 <% end %>
 <% else %>
-<h3>１日の投稿上限をオーバーしています</h3>
+<h3>※１日の投稿は５件までです。明日も1日頑張りましょう！</h3>
 <% end %>
 <small>※予定は自動的に翌日にセットされます。</small>
 
@@ -31,15 +33,17 @@
   <%= link_to todolist_path(date) do %>
     <%= date.day %>
   <% end %>
-  <% todos.each do |todo| %>
-    <div>
-      <% if todo.check %>
-        <strike><%= todo.list %></strike>
-      <% else %>
-        <%= todo.list %>
-      <% end %>
-    </div>
-  <% end %>
+
+    <% todos.each do |todo| %>
+     <li>
+        <% if todo.check %>
+          <strike><%= todo.list %></strike>
+        <% else %>
+          <%= todo.list %>
+        <% end %>
+      </li>
+    <% end %>
+
 <% end %>
 
 <h2>ランキング</h2>
