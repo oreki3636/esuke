@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     get 'users/mypage' => 'users#mypage',as: 'mypage'
     #post 'users/mypage' => 'users#mypage'
     get 'users/unsubscribe' => 'users#unsubscribe',as: 'unsubscribe'
-    resources :users,only: [:index]
+    resources :users,only: [:index,:show]
     resources :points
     get 'users/mypage/edit' => 'users#edit',as: 'edit_user_mypage'
     resources :todolists,only: [:new,:show,:update,:create,:destroy]

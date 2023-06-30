@@ -1,5 +1,3 @@
-<%= flash[:notice] %><br>
-
 
 <%= image_tag @user.get_profile_image(100,100) %>
 
@@ -18,6 +16,7 @@
   <%= f.text_field :list %>
   <%= f.submit "書き込み" %>
 <% end %>
+<%= flash[:notice] %><br>
 <% else %>
 <h3>※１日の投稿は５件までです。明日も1日頑張りましょう！</h3>
 <% end %>
@@ -60,7 +59,7 @@
     <% @all_ranks.each_with_index do |rank, i| %>
       <tr>
         <th><%= i + 1 %>位</th>
-        <th><%= rank.name %></th>
+        <th><%= link_to rank.name, user_path(rank.id) %></th>
         <th><%= rank.points.count %></th>
       <tr>
     <% end %>

@@ -10,6 +10,11 @@ import "channels"
 
 import "../stylesheets/application"
 
+import "jquery";
+import "popper.js";
+import "bootstrap";
+import "../stylesheets/application";
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
