@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2023_06_28_061724) do
     t.integer "owder_id"
     t.string "name"
     t.text "introduction"
+    t.string "group_key"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
