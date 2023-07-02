@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2023_06_28_061724) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.integer "owder_id"
+    t.integer "owner_id"
     t.string "name"
     t.text "introduction"
     t.string "group_key"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2023_06_28_061724) do
     t.string "list"
     t.boolean "check", default: false
     t.date "date"
+    t.datetime "completed_datetime"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

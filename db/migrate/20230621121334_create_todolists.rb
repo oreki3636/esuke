@@ -5,6 +5,7 @@ class CreateTodolists < ActiveRecord::Migration[6.1]
       t.string :list
       t.boolean :check, default: false
       t.date :date #データを明日のカレンダーに挿入するカラム
+      t.datetime :completed_datetime
       t.timestamps
     end
   end

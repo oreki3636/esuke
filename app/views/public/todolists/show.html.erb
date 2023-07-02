@@ -11,7 +11,15 @@
           <%= todo.list %>
         <% end %>
       <% end %>
-      <%= link_to "削除", todolist_path(todo), method: :delete, data: {confirm: '削除しますか？'} %>
+      <% if todo.check %>
+        <% if todo.completed_datetime.present? %>
+          <span class="completed-datetime"><%= todo.completed_datetime.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %></span>
+        <% else %>
+          <span class="completed-datetime">日時未設定</span>
+        <% end %>
+      <% else %>
+        <%= link_to "削除", todolist_path(todo), method: :delete, data: { confirm: '削除しますか？' } %>
+      <% end %>
     </li>
   <% end %>
 </ul>

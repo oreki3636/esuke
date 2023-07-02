@@ -13,8 +13,9 @@ class Public::TodolistsController < ApplicationController
 
   def update
     todo = Todolist.find(params[:id])
-    todo.update(check: true)
-    todo.points.create(user_id: current_user.id, done_flg: true)
+    todo.update(check: true, completed_datetime: Time.now)
+    todo.points.create(user_id: current_user.id)
+    todo.points.update_all(done_flg: true)
     redirect_to todolist_path(todo.date)
   end
 
