@@ -1,11 +1,9 @@
 class Public::UsersController < ApplicationController
 
   def show
-    @user = user.find(params[:id])
+    @user = User.find(params[:id])
 
   end
-
-
 
   def edit
     @user = current_user
@@ -24,7 +22,10 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @todolists = @user.todolists
     @todo = Todolist.new
-    @all_ranks = User.find(Point.group(:user_id).order('count(user_id) desc').limit(3).pluck(:user_id))
+
+    ranking_user_ids = Point.group(:user_id).order('count(user_id) desc').limit(100).pluck(:user_id)
+    # User.find([4,2,3])
+    @all_ranks = User.find(ranking_user_ids)
     # byebug
 
 

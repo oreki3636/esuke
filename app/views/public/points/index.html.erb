@@ -33,6 +33,7 @@
             <%= todolist.completed_datetime.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %>
           <% else %>
             日時未設定
+            <%#= 日時指定が出た場合どこか間違っている %>
           <% end %>
         </td>
       </tr>

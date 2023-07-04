@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     patch 'users/mypage' => 'users#update',as: 'mypage_update'
     patch 'users/withdraw' => 'users#withdraw',as: 'withdraw'
     resources :groups, except: [:destroy]
+    
   end
 
   namespace :admin do

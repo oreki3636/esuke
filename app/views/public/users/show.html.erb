@@ -1,1 +1,13 @@
-<h2><%= @user.name %></h2>
+<%= image_tag @user.get_profile_image(100,100) %><br>
+
+<label>名前</label>
+<p><%= @user.name %></p>
+
+<label>自己紹介</label>
+<p><%= @user.introduction %></p>
+
+<label>ポイント</label>
+<p><%= @user.points.count %>ポイント</p>
+
+<%= link_to "マイページへ", mypage_path %>
+<%= link_to "グループ一覧へ", groups_path %>

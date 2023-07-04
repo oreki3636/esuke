@@ -1,13 +1,14 @@
 class Public::GroupsController < ApplicationController
   def index
-    @groups = Group.all
+    @groups = current_user.groups
   end
 
   def show
     @group = Group.find(params[:id])
-    # @user_ranks = User.find(Point.group(:user_id).order('count(user_id) desc').limit(30).pluck(:user_id))
-    # @group_ranks = @user_ranks.select{|user|user.group.id == params[:id]}
-    @user_ranks = @group.users.sort{|a,b| a.points.count <=> b.points.count}
+    @user_ranks = @group.users.sort{|a,b| b.points.count <=> a.points.count}
+    #sort配列を変える
+    #並べ替えの基準には <=> 演算子が使われており、数値の比較を行っている
+    #{|a,b| a.points.count <=> b.points.count}の場合小さい順、{|a,b| b.points.count <=> a.points.count}は大きい順
   end
 
   def new
@@ -17,7 +18,12 @@ class Public::GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
+    group_user_ids = params[:group][:user_ids]
     if @group.save
+      GroupUser.create(group_id: @group.id, user_id: @group.owner_id)
+      group_user_ids.each do |user_id|
+        GroupUser.create(group_id: @group.id, user_id: user_id)
+      end
       redirect_to groups_path
     else
       render :new
