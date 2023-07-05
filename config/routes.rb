@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'groups/index'
-    get 'groups/show'
-    get 'groups/new'
-  end
+
   devise_for :users,skip:[:passwords],controllers:{
    registrations: "public/registrations",
    sessions: 'public/sessions'
@@ -26,7 +22,7 @@ Rails.application.routes.draw do
     patch 'users/mypage' => 'users#update',as: 'mypage_update'
     patch 'users/withdraw' => 'users#withdraw',as: 'withdraw'
     resources :groups, except: [:destroy]
-    
+
   end
 
   namespace :admin do

@@ -2,41 +2,50 @@
 <html>
   <head>
     <title>Esuke</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
-      <h2>Eスケ</h2>
-
-
-      <ul class="navbar">
-        <% if user_signed_in? %>
-          <li><%= link_to "マイページ", mypage_path %></li>
-          <li><%= link_to "グループ一覧", groups_path %></li>
-          <li><%= link_to "about", about_path %> </li>
-          <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-          <li><%= link_to "退会", unsubscribe_path %></li>
-        <% elsif admin_signed_in? %>
-          <li><%= link_to "top",admin_root_path %></li>
-          <li><%= link_to "ログアウト",destroy_admin_session_path, method: :delete %></li>
-        <% else %>
-          <li><%= link_to "ログイン" ,user_session_path %></li>
-          <li><%= link_to "新規登録" ,new_user_registration_path %></li>
-          <li><%= link_to "about", about_path %></li>
-        <% end %>
-      </ul>
+    <header class="shadow-sm flex-shrink-0">
+      <nav class="navbar navbar-expand-lg navbar-light flex-column bg-light">
+        <h2>Eスケ</h2>
+      </nav>
     </header>
-    <main>
-      <%= yield %>
+
+    <main class="d-flex flex-row">
+      <nav class="sidebar">
+        <ul>
+          <% if user_signed_in? %>
+            <li><%= link_to "マイページ", mypage_path %></li>
+            <li><%= link_to "グループ一覧", groups_path %></li>
+            <li><%= link_to "about", about_path %> </li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <li><%= link_to "退会", unsubscribe_path %></li>
+          <% elsif admin_signed_in? %>
+            <li><%= link_to "top",admin_root_path %></li>
+            <li><%= link_to "ログアウト",destroy_admin_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "ログイン" ,user_session_path %></li>
+            <li><%= link_to "新規登録" ,new_user_registration_path %></li>
+            <li><%= link_to "about", about_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+
+      <div class="content">
+        <%= yield %>
+      </div>
     </main>
+
     <footer>
 
     </footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
   </body>
 </html>

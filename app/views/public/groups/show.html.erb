@@ -1,6 +1,5 @@
-<h1><%= @group.name %></h1>
-<h3><%= @group.introduction %></h3>
-
+<h2><%= @group.name %>(<%= @group.users.count %>人)</h2>
+<p>グループ説明：<%= @group.introduction %></p>
 
 <table>
     <thead>
