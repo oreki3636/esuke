@@ -6,41 +6,37 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header class="shadow-sm flex-shrink-0">
-      <nav class="navbar navbar-expand-lg navbar-light flex-column bg-light">
-        <h2>Eスケ</h2>
-      </nav>
-    </header>
+    <header>
+      <p>至高の”スケジュール”を最高の”仲間”と</p>
+      <h2 class="stylish-heading">Esuke</h2>
 
-    <main class="d-flex flex-row">
-      <nav class="sidebar">
-        <ul>
+
+
+        <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
-            <li><%= link_to "マイページ", mypage_path %></li>
-            <li><%= link_to "グループ一覧", groups_path %></li>
-            <li><%= link_to "about", about_path %> </li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-            <li><%= link_to "退会", unsubscribe_path %></li>
+            <li><%= link_to "Mypage", mypage_path %></li>
+            <li><%= link_to "Gruop", groups_path %></li>
+            <li><%= link_to "About", about_path %> </li>
+            <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
           <% elsif admin_signed_in? %>
-            <li><%= link_to "top",admin_root_path %></li>
-            <li><%= link_to "ログアウト",destroy_admin_session_path, method: :delete %></li>
+            <li><%= link_to "Top",admin_root_path %></li>
+            <li><%= link_to "Log out",destroy_admin_session_path, method: :delete %></li>
           <% else %>
-            <li><%= link_to "ログイン" ,user_session_path %></li>
-            <li><%= link_to "新規登録" ,new_user_registration_path %></li>
+            <li><%= link_to "Log in" ,user_session_path %></li>
+            <li><%= link_to "Sign up" ,new_user_registration_path %></li>
             <li><%= link_to "about", about_path %></li>
           <% end %>
         </ul>
-      </nav>
+        </header>
 
-      <div class="content">
+      <main>
         <%= yield %>
-      </div>
     </main>
 
     <footer>
