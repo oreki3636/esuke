@@ -1,61 +1,62 @@
 
+<div class="container">
+  <%= form_with model: group, local: true do |f| %>
+   <div class="form-group">
+    <%= f.label :グループ名 %>
+    <%= f.text_field :name %>
+   </div>
 
-<%= form_with model: group, local: true do |f| %>
- <div class="form-group">
-  <%= f.label :グループ名 %>
-  <%= f.text_field :name %>
- </div>
+   <div class="form-group">
+    <%= f.label :紹介文 %>
+    <%= f.text_area :introduction %>
+   </div>
 
- <div class="form-group">
-  <%= f.label :紹介文 %>
-  <%= f.text_area :introduction %>
- </div>
+   <div class="form-group">
+    <%= f.label :グループ画像 %>
+    <%= f.file_field :image, accept: 'image/*' %>
+   </div>
 
- <div class="form-group">
-  <%= f.label :グループ画像 %>
-  <%= f.file_field :image, accept: 'image/*' %>
- </div>
+   <div class="form-group">
+    <%= f.label :ユーザー検索 %>
+    <%= f.text_field :user_search, id: 'user_search_input' %>
+   </div>
 
- <div class="form-group">
-  <%= f.label :ユーザー検索 %>
-  <%= f.text_field :user_search, id: 'user_search_input' %>
- </div>
+   <div class="form-group" style="overflow-y: scroll; max-height: 200px;">
+    <ul style="list-style: none;">
+     <%= f.collection_check_boxes(:user_ids, User.where.not(id: current_user.id),:id, :name) do |b| %>
+     <li><%= b.label { b.check_box + (" " + b.text)} %></li>
+     <% end %>
+    </ul>
+   </div>
 
- <div class="form-group" style="overflow-y: scroll; max-height: 200px;">
-  <ul style="list-style: none;">
-   <%= f.collection_check_boxes(:user_ids, User.where.not(id: current_user.id),:id, :name) do |b| %>
-   <li><%= b.label { b.check_box + (" " + b.text)} %></li>
-   <% end %>
-  </ul>
- </div>
+   <div class="form-group">
+    <%= f.submit %>
+   </div>
+  <% end %>
 
- <div class="form-group">
-  <%= f.submit %>
- </div>
-<% end %>
+  <script>
+   document.addEventListener('DOMContentLoaded', () => {
+    const userSearchInput = document.getElementById('user_search_input');
+    const userCheckboxes = document.querySelectorAll('input[type="checkbox"]');
 
-<script>
- document.addEventListener('DOMContentLoaded', () => {
-  const userSearchInput = document.getElementById('user_search_input');
-  const userCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+    function filterUsers() {
+     var searchValue = userSearchInput.value.toLowerCase();
 
-  function filterUsers() {
-   var searchValue = userSearchInput.value.toLowerCase();
+     userCheckboxes.forEach(function(checkbox) {
+      var userLabel = checkbox.parentElement.textContent.toLowerCase();
 
-   userCheckboxes.forEach(function(checkbox) {
-    var userLabel = checkbox.parentElement.textContent.toLowerCase();
-
-    if (userLabel.includes(searchValue)) {
-     checkbox.parentElement.style.display = 'block';
-    } else {
-     checkbox.parentElement.style.display = 'none';
+      if (userLabel.includes(searchValue)) {
+       checkbox.parentElement.style.display = 'block';
+      } else {
+       checkbox.parentElement.style.display = 'none';
+      }
+     })
     }
-   })
-  }
 
-  userSearchInput.addEventListener('input', filterUsers);
+    userSearchInput.addEventListener('input', filterUsers);
 
-  filterUsers();
+    filterUsers();
 
- });
-</script>
+   });
+  </script>
+</div>

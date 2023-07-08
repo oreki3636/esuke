@@ -13,27 +13,40 @@
 
   <body>
     <header>
-      <p>至高の”スケジュール”を最高の”仲間”と</p>
-      <h2 class="stylish-heading">Esuke</h2>
+      <nav class="navbar navbar-expand-lg">
+      <%# navbar-expand-lg lg以上でナビバー展開 %>
+      <%# テキストとアイコンを暗色 %>
+      <%# bg-dark背景色を暗色 %>
+        <div class="container">
+          <a class="navbar-brand" href="/">
+            <span class="subtitle">至高の”スケジュール”を最高の”仲間”と</span><br>
+            <span class="esuke">Esuke</span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Tlggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-
-
-        <ul class="navbar-nav ml-auto">
-          <% if user_signed_in? %>
-            <li><%= link_to "Mypage", mypage_path %></li>
-            <li><%= link_to "Gruop", groups_path %></li>
-            <li><%= link_to "About", about_path %> </li>
-            <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-          <% elsif admin_signed_in? %>
-            <li><%= link_to "Top",admin_root_path %></li>
-            <li><%= link_to "Log out",destroy_admin_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Log in" ,user_session_path %></li>
-            <li><%= link_to "Sign up" ,new_user_registration_path %></li>
-            <li><%= link_to "about", about_path %></li>
-          <% end %>
-        </ul>
-        </header>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto flex-column">
+              <% if user_signed_in? %>
+                <li class="nav-item"><%= link_to "Mypage", mypage_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Gruop", groups_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "About", about_path, class: "nav-link" %> </li>
+                <li class="nav-item"><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+              <% elsif admin_signed_in? %>
+                <li class="nav-item"><%= link_to "Top",admin_root_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Log out",destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
+              <% else %>
+                <li class="nav-item"><%= link_to "Log in" ,user_session_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "Sign up" ,new_user_registration_path, class: "nav-link" %></li>
+                <li class="nav-item"><%= link_to "about", about_path, class: "nav-link" %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
 
       <main>
         <%= yield %>
