@@ -6,29 +6,36 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">-->
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg">
+      <nav class="navbar navbar-expand-lg navbar-light h-100">
       <%# navbar-expand-lg lg以上でナビバー展開 %>
       <%# テキストとアイコンを暗色 %>
       <%# bg-dark背景色を暗色 %>
-        <div class="container">
-          <a class="navbar-brand" href="/">
-            <span class="subtitle">至高の”スケジュール”を最高の”仲間”と</span><br>
-            <span class="esuke">Esuke</span>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Tlggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+        <div class="container h-100">
+          <div class="w-100 d-flex align-self-start justify-content-between">
+            <div>
+              <a class="navbar-brand" href="/">
+                <span class="subtitle">至高の”スケジュール”を最高の”仲間”と</span><br>
+                <span class="esuke">Esuke</span>
+              </a>
+            </div>
+            <div>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+          </div>
 
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto flex-column">
+            <ul class="navbar-nav ml-auto d-flex flex-column justify-content-center align-self-center">
               <% if user_signed_in? %>
                 <li class="nav-item"><%= link_to "Mypage", mypage_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "Gruop", groups_path, class: "nav-link" %></li>
@@ -47,14 +54,14 @@
         </div>
       </nav>
     </header>
-
-      <main>
-        <%= yield %>
+    &nbsp;
+    <main>
+      <%= yield %>
     </main>
 
     <footer>
 
     </footer>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>-->
   </body>
 </html>

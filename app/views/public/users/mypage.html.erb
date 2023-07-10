@@ -1,70 +1,86 @@
 
-<%= image_tag @user.get_profile_image(100,100) %>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="headline">Mypage</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4">
+      <div class="image-tag">
+        <%= image_tag @user.get_profile_image(350,400) %>
+      </div>
+    </div>
 
-<%= link_to "編集", edit_user_mypage_path %>
+    <div class="col-xs-12 col-sm-8">
+      <label>名前</label><br>
+      <p class="profile"><%= @user.name %></p><br>
 
-<p>名前</p>
-<%= @user.name %>
+      <label>自己紹介</label><br>
+      <p class="profile"><%= @user.introduction %></p><br>
 
-<p>自己紹介</p>
-<%= @user.introduction %>
-<% if Todolist.where(date: Date.current.in_time_zone('Tokyo') + 1.days,
-            user_id: current_user.id
-          ).count < 5 %>
-<h2>新規登録</h2>
-<%= form_with model: @todo, url: todolists_path do |f| %>
-  <%= f.text_field :list %>
-  <%= f.submit "書き込み" %>
-<% end %>
-<%= flash[:notice] %><br>
-<% else %>
-<h3>※１日の投稿は５件までです。明日も1日頑張りましょう！</h3>
-<% end %>
-<small>※予定は自動的に翌日にセットされます。</small>
+      <label>現在のEスケポイント</label><br>
+      <p class="profile"><%= @user.points.count %></p><br>
 
-<h2>現在のEスケポイント</h2>
-<h1><%= @user.points.count %></h1>
-<%= link_to "Eスケポイント履歴を見る",points_path %>
+      <p><%= link_to "プロフィールを編集する", edit_user_mypage_path,class: "btn btn-dark" %></p>
+      <p><%= link_to "Eスケポイント履歴を見る",points_path, class: "btn btn-dark" %></p>
+    </div>
+  </div>
 
-<h2>カレンダー</h2>
-<%= month_calendar(attribute: :date, end_attribute: :date, events: @todolists) do |date, todos| %>
-<%#= attribute: :開始時間の属性名, end_attribute: :終了時間の属性名をデータカラムに持たせ%>
-  <%= link_to todolist_path(date) do %>
-    <%= date.day %>
-  <% end %>
+  <div class="row">
+    <div class="col-12">
+      <% if Todolist.where(date: Date.current.in_time_zone('Tokyo') + 1.days,
+              user_id: current_user.id
+            ).count < 5 %>
+      <h2 class="title">New post</h2>
+      <%= form_with model: @todo, url: todolists_path do |f| %>
+        <%= f.text_field :list %>
+        <%= f.submit "書き込み",class: "btn btn-dark" %>
+      <% end %>
+      <%= flash[:notice] %><br>
+      <% else %>
+      <h3>※１日の投稿は５件までです。明日も1日頑張りましょう！</h3>
+      <% end %>
+      <small>※予定は自動的に翌日にセットされます。</small>
+    </div>
+  </div>
 
-    <% todos.each do |todo| %>
-     <li>
-        <% if todo.check %>
-          <strike><%= todo.list %></strike>
-        <% else %>
-          <%= todo.list %>
+  <div class="row">
+    <div class="col-12">
+      <h2 class="title">Calendar</h2>
+      <%= month_calendar(attribute: :date, end_attribute: :date, events: @todolists) do |date, todos| %>
+      <%#= attribute: :開始時間の属性名, end_attribute: :終了時間の属性名をデータカラムに持たせ%>
+        <%= link_to todolist_path(date) do %>
+          <%= date.day %>
         <% end %>
-      </li>
-    <% end %>
 
-<% end %>
+          <% todos.each do |todo| %>
+           <li>
+              <% if todo.check %>
+                <strike><%= todo.list %></strike>
+              <% else %>
+                <%= todo.list %>
+              <% end %>
+            </li>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
 
-<h2>ランキング</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>ランキング</th>
-      <th>名前</th>
-      <th>ポイント数</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @all_ranks.each_with_index do |rank, i| %>
-      <tr>
-        <th><%= i + 1 %>位</th>
-        <th><%= link_to rank.name, user_path(rank.id) %></th>
-        <th><%= rank.points.count %></th>
-      <tr>
-    <% end %>
-  </tbody>
-</table>
-
+  <div class="row">
+    <div class="col-12">
+      <h2 class="title">Point ranking</h2>
+      <table>
+        <% @all_ranks.each_with_index do |rank, i| %>
+          <tr>
+            <th><%= i + 1 %>位</th>
+            <th><%= link_to rank.name, user_path(rank.id) %></th>
+            <th><%= rank.points.count %></th>
+          <tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
 
 

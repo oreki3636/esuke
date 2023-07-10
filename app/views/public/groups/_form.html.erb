@@ -1,23 +1,25 @@
 
 <div class="container">
+ <div class="row">
+
   <%= form_with model: group, local: true do |f| %>
    <div class="form-group">
-    <%= f.label :グループ名 %>
+    <%= f.label :グループ名 %><br>
     <%= f.text_field :name %>
    </div>
 
    <div class="form-group">
-    <%= f.label :紹介文 %>
+    <%= f.label :紹介文 %><br>
     <%= f.text_area :introduction %>
    </div>
 
    <div class="form-group">
-    <%= f.label :グループ画像 %>
+    <%= f.label :グループ画像 %><br>
     <%= f.file_field :image, accept: 'image/*' %>
    </div>
 
    <div class="form-group">
-    <%= f.label :ユーザー検索 %>
+    <%= f.label :ユーザー検索 %><br>
     <%= f.text_field :user_search, id: 'user_search_input' %>
    </div>
 
@@ -33,6 +35,7 @@
     <%= f.submit %>
    </div>
   <% end %>
+ </div>
 
   <script>
    document.addEventListener('DOMContentLoaded', () => {
