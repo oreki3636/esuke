@@ -1,24 +1,35 @@
-<h2>プロフィール編集</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="title">profile edit</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= image_tag @user.get_profile_image(300,300) %>
+    </div>
+    <div class="col">
+      <%= form_with model: @user, url: mypage_path do |f| %>
+        <%= f.label :アイコン %>
+        <%= f.file_field :profile_image,accept: "image/*" %><br>
 
-<%= image_tag @user.get_profile_image(300,300) %>
+        <%= f.label :名前 %>
+        <%= f.text_field :name %><br>
 
-<%= form_with model: @user, url: mypage_path do |f| %>
-  <%= f.label :アイコン %>
-  <%= f.file_field :profile_image,accept: "image/*" %><br>
+        <%= f.label :自己紹介 %>
+        <%= f.text_area :introduction %><br>
 
-  <%= f.label :名前 %>
-  <%= f.text_field :name %><br>
+        <%= f.label :メールアドレス %>
+        <%= f.text_field :email %><br>
 
-  <%= f.label :自己紹介 %>
-  <%= f.text_area :introduction %><br>
+        <%= f.label :電話番号 %>
+        <%= f.text_field :telephone_number %><br>
+        <%= f.submit "編集する" %>
 
-  <%= f.label :メールアドレス %>
-  <%= f.text_field :email %><br>
 
-  <%= f.label :電話番号 %>
-  <%= f.text_field :telephone_number %><br>
-  <%= f.submit "編集する" %>
+      <% end %>
+      <%= link_to "退会する", unsubscribe_path %>
+    </div>
+  </div>
+</div>
 
-  <%= link_to "退会する", unsubscribe_path %>
-
-<% end %>

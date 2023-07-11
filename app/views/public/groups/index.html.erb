@@ -1,23 +1,38 @@
-<h2>グループ一覧</h2>
-<%= link_to "グループ作成", new_group_path %>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th></th>
-      <th>グループ名</th>
-      <th>紹介文</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @groups.each do |group| %>
-　　　<tr>
-        <td><%= image_tag group.get_image, size: "50x50" %></td>
-        <td><%= link_to group.name, group_path(group) %></td>
-        <td><%= group.introduction %></td>
-        <td><%= link_to "編集", edit_group_path(group) %></td>
-　　　</tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="headline">Group</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <%= link_to "グループ作成", new_group_path, class: "btn btn-dark" %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>グループ名</th>
+            <th>紹介文</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @groups.each do |group| %>
+        　　　<tr>
+                <td><%= image_tag group.get_image, size: "50x50" %></td>
+                <td><%= link_to group.name, group_path(group), class: "link-black" %></td>
+                <td><%= group.introduction %></td>
+                <td><%= link_to "編集", edit_group_path(group), class: "btn btn-dark" %></td>
+          　</tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+<

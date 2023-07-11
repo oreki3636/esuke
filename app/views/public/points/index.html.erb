@@ -1,42 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2>Eスケポイント獲得履歴</h2>
+      <%= @points.count %> Point
 
-
-
-
-<h2>Eスケポイント獲得履歴</h2>
-<%= @points.count %> Point
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>投稿内容</th>
-      <th>獲得ポイント</th>
-      <th>ステータス</th>
-      <th>投稿日時</th>
-      <th>完了日時</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @todolists.each do |todolist| %>
-      <tr>
-        <td><%= todolist.list %></td>
-        <td><%= todolist.points.count %>ポイント</td>
-        <td>
-          <% if todolist.check? %>
-            完了済
-          <% else %>
-            投稿済
-          <% end %>
-        </td>
-        <td><%= todolist.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %></td>
-        <td>
-          <% if todolist.completed_datetime.present? %>
-            <%= todolist.completed_datetime.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %>
-          <% else %>
-            日時未設定
-            <%#= 日時指定が出た場合どこか間違っている %>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-  </tbody>
-</table>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>投稿内容</th>
+            <th>獲得ポイント</th>
+            <th>ステータス</th>
+            <th>投稿日時</th>
+            <th>完了日時</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @todolists.each do |todolist| %>
+            <tr>
+              <td><%= todolist.list %></td>
+              <td><%= todolist.points.count %>ポイント</td>
+              <td>
+                <% if todolist.check? %>
+                  完了済
+                <% else %>
+                  投稿済
+                <% end %>
+              </td>
+              <td><%= todolist.created_at.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %></td>
+              <td>
+                <% if todolist.completed_datetime.present? %>
+                  <%= todolist.completed_datetime.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %>
+                <% else %>
+                  未完了
+                  <%#= 日時指定が出た場合どこか間違っている %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

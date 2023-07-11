@@ -70,12 +70,12 @@
   <div class="row">
     <div class="col-12">
       <h2 class="title">Point ranking</h2>
-      <table>
+      <table class="table">
         <% @all_ranks.each_with_index do |rank, i| %>
           <tr>
-            <th><%= i + 1 %>位</th>
-            <th><%= link_to rank.name, user_path(rank.id) %></th>
-            <th><%= rank.points.count %></th>
+            <th class="ranking-number"><%= i + 1 %>位</th>
+            <th><%= link_to rank.name, user_path(rank.id),class: "link-black" %></th>
+            <th class="ranking-point"><%= rank.points.count %>point</th>
           <tr>
         <% end %>
       </table>
