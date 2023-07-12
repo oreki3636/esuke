@@ -1,7 +1,19 @@
-<h1>時間は有限　可能性は無限　Eスケジュールを</h1>
-<p>白紙のスケジュル帳とはもうお別れ<br>
-友達や仲間と一緒にゲーム感覚でスケジュール帳を書く習慣を身に付けましょう！</p>
-<%= link_to "ログイン", user_session_path %>
-<%= link_to "新規登録", new_user_registration_path %>
-<%= link_to "ゲストログイン" %>
-<%= link_to "about", about_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="headline">Well come to Esuke</h1>
+      <div class="parent">
+        <%= image_tag 'img_b6aae7c7a00c8125a4896b4aa5bf5e0693973.jpg',class: "top-img" %>
+
+        <div class="box">
+          <h3>時間は有限　可能性は無限　Eスケジュールを</h3>
+        </div>
+      </div>
+
+      <p>白紙のスケジュル帳とはもうお別れ<br>
+      友達や仲間と一緒にゲーム感覚でスケジュール帳を書く習慣を身に付けましょう！</p>
+      <%= link_to "ログイン", user_session_path, class: "btn btn-dark" %>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-dark" %>
+      <%= link_to "about", about_path, class: "btn btn-dark" %>
+  </div>
+</div>

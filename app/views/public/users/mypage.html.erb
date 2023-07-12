@@ -6,21 +6,24 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12 col-sm-4">
+    <div class="col-12">
+      <h2 class="title">Profile</h2>
+    </div>
+    <div class="col-xs-12 col-sm-5">
       <div class="image-tag">
-        <%= image_tag @user.get_profile_image(350,400) %>
+        <%= image_tag @user.get_profile_image(400,400) %>
       </div>
     </div>
 
-    <div class="col-xs-12 col-sm-8">
+    <div class="col-xs-12 col-sm-7">
       <label>名前</label><br>
-      <p class="profile"><%= @user.name %></p><br>
+      <p class="profile"><%= @user.name %></p>
 
       <label>自己紹介</label><br>
-      <p class="profile"><%= @user.introduction %></p><br>
+      <p class="profile"><%= @user.introduction %></p>
 
       <label>現在のEスケポイント</label><br>
-      <p class="profile"><%= @user.points.count %></p><br>
+      <p class="profile"><%= @user.points.count %></p>
 
       <p><%= link_to "プロフィールを編集する", edit_user_mypage_path,class: "btn btn-dark" %></p>
       <p><%= link_to "Eスケポイント履歴を見る",points_path, class: "btn btn-dark" %></p>

@@ -1,13 +1,21 @@
-<%= image_tag @user.get_profile_image(100,100) %><br>
+<div class="container">
+  <div class="row">
+    <div class=col-5>
+      <%= image_tag @user.get_profile_image(400,400) %>
+    </div>
+    <div class=col-7>
+      <label>名前</label>
+      <p class="profile"><%= @user.name %></p>
 
-<label>名前</label>
-<p><%= @user.name %></p>
+      <label>自己紹介</label>
+      <p class="profile"><%= @user.introduction %></p>
 
-<label>自己紹介</label>
-<p><%= @user.introduction %></p>
+      <label>ポイント</label>
+      <p class="profile"><%= @user.points.count %>ポイント</p>
 
-<label>ポイント</label>
-<p><%= @user.points.count %>ポイント</p>
+      <%= link_to "マイページへ", mypage_path, class: "btn btn-dark" %>
+      <%= link_to "グループ一覧へ", groups_path, class: "btn btn-dark" %>
+    </div>
+  </div>
+</div>
 
-<%= link_to "マイページへ", mypage_path %>
-<%= link_to "グループ一覧へ", groups_path %>

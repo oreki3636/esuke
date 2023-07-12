@@ -6,29 +6,27 @@
   </div>
   <div class="row">
     <div class="col">
-      <%= image_tag @user.get_profile_image(300,300) %>
+      <%= image_tag @user.get_profile_image(400,400) %>
     </div>
     <div class="col">
       <%= form_with model: @user, url: mypage_path do |f| %>
-        <%= f.label :アイコン %>
+        <%= f.label :アイコン %><br>
         <%= f.file_field :profile_image,accept: "image/*" %><br>
 
-        <%= f.label :名前 %>
+        <%= f.label :名前 %><br>
         <%= f.text_field :name %><br>
 
-        <%= f.label :自己紹介 %>
+        <%= f.label :自己紹介 %><br>
         <%= f.text_area :introduction %><br>
 
-        <%= f.label :メールアドレス %>
+        <%= f.label :メールアドレス %><br>
         <%= f.text_field :email %><br>
 
-        <%= f.label :電話番号 %>
+        <%= f.label :電話番号 %><br>
         <%= f.text_field :telephone_number %><br>
         <%= f.submit "編集する" %>
-
-
       <% end %>
-      <%= link_to "退会する", unsubscribe_path %>
+      <%= link_to "退会する", unsubscribe_path, class: "btn btn-dark" %>
     </div>
   </div>
 </div>

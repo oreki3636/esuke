@@ -1,20 +1,25 @@
-<h1>image</h1>
-<label>会員ID</label>
-<p class="profile"></p><%= @user.id %>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <%= image_tag @user.get_profile_image(300,300) %>
+    </div>
+    <div class="col-7">
+      <label>会員ID</label>
+      <p class="profile"><%= @user.id %></p>
 
-<label>登録日</label>
-<p class="profile"></p><%= @user.created_at %>
+      <label>登録日</label>
+      <p class="profile"><%= @user.created_at %></p>
 
-<label>名前</label>
-<p class="profile"></p><%= @user.name %>
+      <label>名前</label>
+      <p class="profile"><%= @user.name %></p>
 
-<label>メールアドレス</label>
-<p class="profile"></p><%= @user.email %>
+      <label>メールアドレス</label>
+      <p class="profile"><%= @user.email %></p>
 
-<label>電話番号</label>
-<p class="profile"></p><%= @user.telephone_nember %>
+      <label>電話番号</label>
+      <p class="profile"><%= @user.telephone_nember %></p>
 
-
-<%= link_to "管理者TOPへ", admin_root_path %>
-
-
+      <%= link_to "管理者TOPへ", admin_root_path %>
+    </div>
+  </div>
+</div>

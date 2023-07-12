@@ -45,6 +45,7 @@
                 <li class="nav-item"><%= link_to "Top",admin_root_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "Log out",destroy_admin_session_path, method: :delete, class: "nav-link" %></li>
               <% else %>
+                <li class="nav-item"><%= link_to "Top" ,root_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "Log in" ,user_session_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "Sign up" ,new_user_registration_path, class: "nav-link" %></li>
                 <li class="nav-item"><%= link_to "about", about_path, class: "nav-link" %></li>
@@ -58,8 +59,16 @@
     <main>
       <%= yield %>
     </main>
+    &nbsp;
 
     <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p class="footer-logo">Esuke</p>
+          </div>
+        </div>
+      </div>
 
     </footer>
     <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>-->
