@@ -1,5 +1,5 @@
-
 <div class="container">
+  <%= flash[:notice] %><%= flash[:alert] %><br>
   <div class="row">
     <div class="col-12">
       <h1 class="headline">Mypage</h1>
@@ -38,9 +38,8 @@
       <h2 class="title">New post</h2>
       <%= form_with model: @todo, url: todolists_path do |f| %>
         <%= f.text_field :list %>
-        <%= f.submit "書き込み",class: "btn btn-dark" %>
+        <%= f.submit "書き込み", class: "btn btn-dark" %>
       <% end %>
-      <%= flash[:notice] %><br>
       <% else %>
       <h3>※１日の投稿は５件までです。明日も1日頑張りましょう！</h3>
       <% end %>

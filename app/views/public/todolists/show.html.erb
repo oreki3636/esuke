@@ -1,26 +1,28 @@
-<h2><%= params[:id].to_date.strftime('%Y/%m/%d') %>のEスケ一覧</h2>
-<%#= コントローラーで記述したID（日付）strftimeは日付の前につける %>
+<div class="container">
+  <h2><%= params[:id].to_date.strftime('%Y/%m/%d') %>のEスケ一覧</h2>
+  <%#= コントローラーで記述したID（日付）strftimeは日付の前につける %>
 
-<ul>
-  <% @todolists.each do |todo| %>
-    <li>
-      <%= link_to todolist_path(todo), method: :patch, data: {confirm: '完了にしますか？'} do %>
+  <ul>
+    <% @todolists.each do |todo| %>
+      <li>
+        <%= link_to todolist_path(todo), method: :patch, data: {confirm: '完了にしますか？'}, class: "link-black" do %>
+          <% if todo.check %>
+            <strike><%= todo.list %></strike>
+          <% else %>
+            <%= todo.list %>
+          <% end %>
+        <% end %>
         <% if todo.check %>
-          <strike><%= todo.list %></strike>
+          <% if todo.completed_datetime.present? %>
+            <span class="completed-datetime"><%= todo.completed_datetime.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %></span>
+          <% else %>
+            <span class="completed-datetime">日時未設定</span>
+          <% end %>
         <% else %>
-          <%= todo.list %>
+          <%= link_to "削除", todolist_path(todo), method: :delete, data: { confirm: '削除しますか？' }, class: "link-black"  %>
         <% end %>
-      <% end %>
-      <% if todo.check %>
-        <% if todo.completed_datetime.present? %>
-          <span class="completed-datetime"><%= todo.completed_datetime.in_time_zone('Tokyo').strftime('%Y/%m/%d %H:%M') %></span>
-        <% else %>
-          <span class="completed-datetime">日時未設定</span>
-        <% end %>
-      <% else %>
-        <%= link_to "削除", todolist_path(todo), method: :delete, data: { confirm: '削除しますか？' } %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-<%= link_to "mypageへ",mypage_path %>
+      </li>
+    <% end %>
+  </ul>
+  <%= link_to "mypageへ",mypage_path, class: "btn btn-dark" %>
+</div>

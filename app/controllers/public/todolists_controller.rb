@@ -25,7 +25,7 @@ class Public::TodolistsController < ApplicationController
       @todolist.points.create(user_id: current_user.id, done_flg: false)
       redirect_to mypage_path, notice: '登録に成功'
     else
-      redirect_to mypage_path
+      redirect_to mypage_path, alert: '登録に失敗しました。'
     end
   end
 

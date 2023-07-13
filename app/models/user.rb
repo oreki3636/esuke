@@ -1,3 +1,5 @@
+
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -7,6 +9,8 @@ class User < ApplicationRecord
   has_many :todolists, dependent: :destroy
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
+
+  validates :password, length: { minimum: 6 }, if: :password_required?
 
   has_one_attached :profile_image
 
@@ -21,6 +25,11 @@ class User < ApplicationRecord
 
   def active_for_authentication?
     super && !is_deleted
+  end
+
+  #パスワードが必要な場合にのみバリデーションが実行されるようになる
+  def password_required?
+    new_record? || password.present?
   end
 
 end
