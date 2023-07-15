@@ -1,1 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
+
+.simple-calendar {
+  .day {
+    height: 120px;
+  }
+}

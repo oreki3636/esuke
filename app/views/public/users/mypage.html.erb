@@ -52,19 +52,30 @@
       <h2 class="title">Calendar</h2>
       <%= month_calendar(attribute: :date, end_attribute: :date, events: @todolists) do |date, todos| %>
       <%#= attribute: :開始時間の属性名, end_attribute: :終了時間の属性名をデータカラムに持たせ%>
-        <%= link_to todolist_path(date) do %>
+        <%= link_to todolist_path(date), class: "link-black" do %>
           <%= date.day %>
         <% end %>
 
-          <% todos.each do |todo| %>
-           <li>
-              <% if todo.check %>
-                <strike><%= todo.list %></strike>
-              <% else %>
-                <%= todo.list %>
-              <% end %>
-            </li>
+        <br>
+        <% checked_todos = [] %>
+        <% todos.each do |todo| %>
+          <% if todo.check %>
+            <% checked_todos << todo %>
           <% end %>
+        <% end %>
+        <% if todos.present? %>
+          <%= checked_todos.count %>/<%= todos.count %>
+        <% end %>
+
+          <%# todos.each do |todo| %>
+          <!-- <li>-->
+          <!--    <%# if todo.check %>-->
+          <!--      <strike><%#= todo.list %></strike>-->
+          <!--    <%# else %>-->
+          <!--      <%#= todo.list %>-->
+          <!--    <%# end %>-->
+          <!--  </li>-->
+          <!--<%# end %>-->
       <% end %>
     </div>
   </div>

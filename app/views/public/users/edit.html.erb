@@ -24,8 +24,13 @@
 
         <%= f.label :電話番号 %><br>
         <%= f.text_field :telephone_number %><br>
+        <br>
         <%= f.submit "編集する" %>
       <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
       <%= link_to "Esukeを退会する", unsubscribe_path, class: "btn btn-dark" %>
     </div>
   </div>

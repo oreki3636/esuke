@@ -23,6 +23,7 @@ class Public::UsersController < ApplicationController
     @todolists = @user.todolists
     @todo = Todolist.new
 
+
     ranking_user_ids = Point.group(:user_id).order('count(user_id) desc').limit(100).pluck(:user_id)
     # User.find([4,2,3])
     @all_ranks = User.find(ranking_user_ids)
