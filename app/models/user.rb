@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :groups, through: :group_users
 
   validates :password, length: { minimum: 6 }, if: :password_required?
+  validates :name, presence: true
 
   has_one_attached :profile_image
 

@@ -11,7 +11,7 @@
     </div>
     <div class="col-xs-12 col-sm-5">
       <div class="image-tag">
-        <%= image_tag @user.get_profile_image(400,400) %>
+        <%= image_tag @user.get_profile_image(350,350) %>
       </div>
     </div>
 
@@ -86,11 +86,12 @@
       <table class="table">
         <% @all_ranks.each_with_index do |rank, i| %>
           <tr>
-            <th class="ranking-number"><%= i + 1 %>位</th>
+            <th class="ranking-number"><%= i + @index_plus %>位</th>
             <th><%= link_to rank.name, user_path(rank.id),class: "link-black" %></th>
             <th class="ranking-point"><%= rank.points.count %>point</th>
           <tr>
         <% end %>
+        <%= paginate @all_ranks %>
       </table>
     </div>
   </div>

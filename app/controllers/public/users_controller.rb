@@ -22,11 +22,11 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @todolists = @user.todolists
     @todo = Todolist.new
-
-
     ranking_user_ids = Point.group(:user_id).order('count(user_id) desc').limit(100).pluck(:user_id)
     # User.find([4,2,3])
-    @all_ranks = User.find(ranking_user_ids)
+    per = 3
+    @index_plus = (params[:page].present? ? (params[:page].to_i - 1) * per : 0) + 1
+    @all_ranks = User.where(id: ranking_user_ids).page(params[:page]).per(per)
     # byebug
 
 

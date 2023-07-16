@@ -1,4 +1,12 @@
 <div class="container">
+  <% if @user.errors.any? %>
+    <%= @user.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class="row">
     <div class="col-12">
       <h2 class="title">profile edit</h2>
@@ -6,7 +14,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <%= image_tag @user.get_profile_image(400,400) %>
+      <%= image_tag @user.get_profile_image(350,350) %>
     </div>
     <div class="col">
       <%= form_with model: @user, url: mypage_path do |f| %>
@@ -25,12 +33,13 @@
         <%= f.label :電話番号 %><br>
         <%= f.text_field :telephone_number %><br>
         <br>
-        <%= f.submit "編集する" %>
+        <%= f.submit "編集する", class: "btn btn-dark" %>
       <% end %>
     </div>
   </div>
+  <br>
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 text-center">
       <%= link_to "Esukeを退会する", unsubscribe_path, class: "btn btn-dark" %>
     </div>
   </div>
