@@ -13,6 +13,10 @@
       <label>ポイント</label>
       <p class="profile"><%= @user.points.count %>ポイント</p>
 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
       <%= link_to "マイページへ", mypage_path, class: "btn btn-dark" %>
       <%= link_to "グループ一覧へ", groups_path, class: "btn btn-dark" %>
     </div>

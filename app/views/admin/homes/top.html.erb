@@ -1,24 +1,32 @@
-<h1>Eスケ利用者ログイン</h1>
-
-<table class="table">
-  <tr>
-    <th>ユーザーID</th>
-    <th>名前</th>
-    <th>メースアドレス</th>
-    <th>退会ステータス</th>
-  </tr>
-
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.id %></td>
-      <td><%= link_to user.name, admin_user_path(user.id) %></td>
-      <td><%= user.email %></td>
-      <td><% if user.is_deleted %>
-            <span>退会</span>
-          <% else %>
-            <span>有効</span>
-          <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="headline">Esuke user list</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <tr>
+          <th>ID</th>
+          <th>名前</th>
+          <th>メースアドレス</th>
+          <th>退会ステータス</th>
+        </tr>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= link_to user.name, admin_user_path(user.id), class: "link-black" %></td>
+            <td><%= user.email %></td>
+            <td><% if user.is_deleted %>
+                  <span>退会</span>
+                <% else %>
+                  <span>有効</span>
+                <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

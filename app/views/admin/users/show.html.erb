@@ -1,5 +1,8 @@
 <div class="container">
   <div class="row">
+    <div class="col-12">
+      <h1 class="headline">User detail</h1>
+    </div>
     <div class="col-5">
       <%= image_tag @user.get_profile_image(300,300) %>
     </div>
@@ -8,7 +11,7 @@
       <p class="profile"><%= @user.id %></p>
 
       <label>登録日</label>
-      <p class="profile"><%= @user.created_at %></p>
+      <p class="profile"><%= @user.created_at.strftime("%Y年%m月%d日") %></p>
 
       <label>名前</label>
       <p class="profile"><%= @user.name %></p>
@@ -17,9 +20,13 @@
       <p class="profile"><%= @user.email %></p>
 
       <label>電話番号</label>
-      <p class="profile"><%= @user.telephone_nember %></p>
+      <p class="profile"><%= @user.telephone_number %></p>
 
-      <%= link_to "管理者TOPへ", admin_root_path %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <%= link_to "管理者TOPへ", admin_root_path, class: "btn btn-dark" %>
     </div>
   </div>
 </div>
