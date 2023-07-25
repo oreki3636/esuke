@@ -30,4 +30,13 @@ Rails.application.routes.draw do
     resources :users,only: [:show]
   end
 
+  # HEADリクエストへのルート設定
+  match '/Core/Skin/Login.aspx', to: 'controller#action', via: :head
+
+  # 不正なGETリクエストへのルート設定
+  match '/.env', to: 'controller#action', via: :all
+
+  # 不正なPOSTリクエストへのルート設定
+  match '/', to: 'controller#action', via: :all
+
 end
