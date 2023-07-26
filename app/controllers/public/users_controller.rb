@@ -26,9 +26,8 @@ class Public::UsersController < ApplicationController
     # User.find([4,2,3])
     per = 3
     @index_plus = (params[:page].present? ? (params[:page].to_i - 1) * per : 0) + 1
-    @all_ranks = User.where(id: ranking_user_ids).page(params[:page]).per(per)
+    @all_ranks = User.where(id: ranking_user_ids).order(points_count: :desc).page(params[:page]).per(per)
     # byebug
-
 
   end
     #point.group(:user_id)#まず、ユーザー情報の番号(user_id)が同じものにグループを分ける
