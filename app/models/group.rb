@@ -9,7 +9,7 @@ class Group < ApplicationRecord
   # imageを呼び出した時に中身が空だったら、assets/images/no_image.jpgを呼び出す
 
   def get_image
-    (image.attached?) ? image : 'no_image.jpeg'
+    (image.attached?) ? image : 'no_image.jpg'
   end
 
 end
