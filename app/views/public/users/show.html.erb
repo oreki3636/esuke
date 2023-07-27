@@ -1,9 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class=col-5>
+    <div class="col-12">
+      <h2 class="title">profile edit</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-lg-5">
       <%= image_tag @user.get_profile_image(350,350) %>
     </div>
-    <div class=col-7>
+    <div class="col-sm-12 col-lg-7">
       <label>名前</label>
       <p class="profile"><%= @user.name %></p>
 

@@ -9,14 +9,14 @@
   <% end %>
   <div class="row">
     <div class="col-12">
-      <h2 class="title">profile edit</h2>
+      <h2 class="title">Profile edit</h2>
     </div>
   </div>
   <div class="row">
-    <div class="col">
+    <div class="col-md-12 col-lg-5">
       <%= image_tag @user.get_profile_image(350,350) %>
     </div>
-    <div class="col">
+    <div class="col-md-12 col-lg-7">
       <%= form_with model: @user, url: mypage_path do |f| %>
         <%= f.label :アイコン %><br>
         <%= f.file_field :profile_image,accept: "image/*" %><br>
