@@ -37,15 +37,26 @@ class Public::GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to groups_path
+      redirect_to group_path(@group)
     else
       render :edit
     end
   end
 
+  def update_one_word
+    @group = Group.find(params[:group_id])
+    @group_user = @group.group_users.find_by(user_id: current_user.id)
+    if @group_user.update({one_word: params[:one_word]})
+      redirect_to group_path(@group)
+    else
+      @user_ranks = @group.users.sort{|a,b| b.points.count <=> a.points.count}
+      render :show
+    end
+  end
+
   private
   def group_params
-    params.require(:group).permit(:name,:introduction,:image)
+    params.require(:group).permit(:name,:introduction,:image,:one_word)
   end
 
 end

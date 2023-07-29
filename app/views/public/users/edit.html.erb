@@ -18,6 +18,7 @@
     </div>
     <div class="col-md-12 col-lg-7">
       <%= form_with model: @user, url: mypage_path do |f| %>
+
         <%= f.label :アイコン %><br>
         <%= f.file_field :profile_image,accept: "image/*" %><br>
 

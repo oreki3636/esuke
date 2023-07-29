@@ -21,7 +21,9 @@ Rails.application.routes.draw do
     resources :todolists,only: [:new,:show,:update,:create,:destroy]
     patch 'users/mypage' => 'users#update',as: 'mypage_update'
     patch 'users/withdraw' => 'users#withdraw',as: 'withdraw'
-    resources :groups, except: [:destroy]
+    resources :groups, except: [:destroy] do
+        patch 'one_word' => 'groups#update_one_word'
+    end
 
   end
 

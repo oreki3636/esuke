@@ -11,12 +11,22 @@
     </div>
     <div class="row">
         <div class="col-12">
+            <%= form_with url: group_one_word_path(@group), method: :patch do |f| %>
+                <%= f.label :一言 %>
+                <%= f.text_field :one_word %>
+                <%= f.submit "送信" %>
+            <% end %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
             <table class="table">
                 <thead>
                     <tr>
                       <th>ランキング</th>
                       <th>名前</th>
                       <th>ポイント数</th>
+                      <th>一言</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +35,7 @@
                             <td><%= i + 1 %>位</td>
                             <td><%= link_to rank.name, user_path(rank.id), class: "link-black" %></td>
                             <td><%= rank.points.count %></td>
+                            <td><%= @group.group_users.find_by(user_id: rank.id).one_word ||"" %></td>
                         </tr>
                     <% end %>
                 </tbody>
