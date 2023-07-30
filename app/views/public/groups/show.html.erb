@@ -36,6 +36,7 @@
                             <td><%= link_to rank.name, user_path(rank.id), class: "link-black" %></td>
                             <td><%= rank.points.count %></td>
                             <td><%= @group.group_users.find_by(user_id: rank.id).one_word ||"" %></td>
+                            <!--|| "": もしone_wordの値がnil（空）だった場合、空文字列を返す。-->
                         </tr>
                     <% end %>
                 </tbody>
