@@ -19,10 +19,11 @@
             <span class="completed-datetime">日時未設定</span>
           <% end %>
         <% else %>
-          <%= link_to "削除", todolist_path(todo), method: :delete, data: { confirm: '削除しますか？' }, class: "link-black"  %>
+          <br><%= link_to "削除", todolist_path(todo), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-dark"  %>
         <% end %>
       </li>
     <% end %>
   </ul>
+  <br>
   <%= link_to "mypageへ",mypage_path, class: "btn btn-dark" %>
 </div>

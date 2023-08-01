@@ -23,7 +23,7 @@
       <p class="profile"><%= @user.introduction %></p>
 
       <label>現在のEスケポイント</label><br>
-      <p class="profile"><%= @user.points.count %></p>
+      <p class="profile"><%= @user.points.count %>point</p>
 
       <p><%= link_to "プロフィールを編集する", edit_user_mypage_path,class: "btn btn-dark" %></p>
       <p><%= link_to "Eスケポイント履歴を見る",points_path, class: "btn btn-dark" %></p>
@@ -36,6 +36,7 @@
               user_id: current_user.id
             ).count < 5 %>
       <h2 class="title">New post</h2>
+
       <%= form_with model: @todo, url: todolists_path do |f| %>
         <%= f.text_field :list, class: "col-md-6" %>
         <%= f.submit "書き込み", class: "btn btn-dark" %>
@@ -86,9 +87,9 @@
       <table class="table">
         <% @all_ranks.each_with_index do |rank, i| %>
           <tr>
-            <th class="ranking-number"><%= i + @index_plus %>位</th>
-            <th><%= link_to rank.name, user_path(rank.id), class: "link-black" %></th>
-            <th class="ranking-point"><%= rank.points.count %>point</th>
+            <td class="ranking-number"><%= i + @index_plus %>位</td>
+            <td><%= link_to rank.name, user_path(rank.id), class: "link-black" %></td>
+            <td class="ranking-point"><%= rank.points.count %>point</td>
           <tr>
         <% end %>
       </table>

@@ -18,33 +18,31 @@
     </div>
     <div class="col-md-12 col-lg-7">
       <%= form_with model: @user, url: mypage_path do |f| %>
+        <div class="form-group">
+          <%= f.label :アイコン %><br>
+          <%= f.file_field :profile_image,accept: "image/*" %><br>
+        </div>
 
+        <div class="form-group">
+          <%= f.label :名前 %><br>
+          <%= f.text_field :name %><br>
+        </div>
 
-       <div class="form-group">
-        <%= f.label :アイコン %><br>
-        <%= f.file_field :profile_image,accept: "image/*" %><br>
-       </div>
+        <div class="form-group">
+          <%= f.label :自己紹介 %><br>
+          <%= f.text_area :introduction %><br>
+        </div>
 
-       <div class="form-group">
-        <%= f.label :名前 %><br>
-        <%= f.text_field :name %><br>
-       </div>
+        <div class="form-group">
+          <%= f.label :メールアドレス %><br>
+          <%= f.text_field :email %><br>
+        </div>
 
-       <div class="form-group">
-        <%= f.label :自己紹介 %><br>
-        <%= f.text_area :introduction %><br>
-       </div>
-
-       <div class="form-group">
-        <%= f.label :メールアドレス %><br>
-        <%= f.text_field :email %><br>
-       </div>
-
-       <div class="form-group">
-        <%= f.label :電話番号 %><br>
-        <%= f.text_field :telephone_number %><br>
-        <br>
-       </div>
+        <div class="form-group">
+          <%= f.label :電話番号 %><br>
+          <%= f.text_field :telephone_number %><br>
+          <br>
+        </div>
         <%= f.submit "編集する", class: "btn btn-dark" %>
       <% end %>
     </div>

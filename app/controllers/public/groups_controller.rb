@@ -6,6 +6,9 @@ class Public::GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @user_ranks = @group.users.sort{|a,b| b.points.count <=> a.points.count}
+    @group_user = @group.group_users.find_by(user_id: current_user.id)
+
+
     #sort配列を変える
     #並べ替えの基準には <=> 演算子が使われており、数値の比較を行っている
     #{|a,b| a.points.count <=> b.points.count}の場合小さい順、{|a,b| b.points.count <=> a.points.count}は大きい順
@@ -46,13 +49,21 @@ class Public::GroupsController < ApplicationController
   def update_one_word
     @group = Group.find(params[:group_id])
     @group_user = @group.group_users.find_by(user_id: current_user.id)
+
+    unless @group_user.valid?
+      p @group_user.errors.full_messages # ターミナルにエラーメッセージを表示
+      @error_messages = @group_user.errors.full_messages
+    end
+
     if @group_user.update({one_word: params[:one_word]})
       redirect_to group_path(@group)
     else
       @user_ranks = @group.users.sort{|a,b| b.points.count <=> a.points.count}
+      @group_errors = @group.errors.full_messages
       render :show
     end
   end
+
 
   private
   def group_params

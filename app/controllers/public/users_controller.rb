@@ -20,6 +20,7 @@ class Public::UsersController < ApplicationController
 
   def mypage
     @user = current_user
+    @users = User.all
     @todolists = @user.todolists
     @todo = Todolist.new
     ranking_user_ids = Point.group(:user_id).order('count(user_id) desc').limit(30).pluck(:user_id)
