@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   validates :password, length: { minimum: 6 }, if: :password_required?
   validates :name, presence: true
+  validates :telephone_number ,presence: true
 
   has_one_attached :profile_image
 
@@ -32,5 +33,4 @@ class User < ApplicationRecord
   def password_required?
     new_record? || password.present?
   end
-
 end

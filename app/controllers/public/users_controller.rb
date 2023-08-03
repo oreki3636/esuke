@@ -23,12 +23,11 @@ class Public::UsersController < ApplicationController
     @users = User.all
     @todolists = @user.todolists
     @todo = Todolist.new
-    ranking_user_ids = Point.group(:user_id).order('count(user_id) desc').limit(30).pluck(:user_id)
-    # User.find([4,2,3])
     @index_plus = (params[:page].present? ? (params[:page].to_i - 1) * per : 0) + 1
-    @all_ranks = User.where(id: ranking_user_ids).order(points_count: :desc)
-    # byebug
-
+    @all_ranks = @users.sort { |a,b| a.points.count <=> b.points.count }.reverse
+    #@all_ranks = User.where(id: ranking_user_ids).order(points_count: :desc)
+    #ranking_user_ids = Point.group(:user_id).order('count(user_id) desc').limit(30).pluck(:user_id)
+    # User.find([4,2,3])
   end
 
 

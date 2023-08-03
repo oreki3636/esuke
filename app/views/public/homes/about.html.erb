@@ -6,9 +6,12 @@
   </div>
 
   <div class="image-container">
-    <%= image_tag '20230328214242.jpg', style: 'width: 100%; height: auto;' %>
-    <span class="image-caption">Esuke＝良いスケジュル</span>
+  <%= image_tag '20230328214242.jpg', style: 'width: 100%; height: auto;' %>
+  <div class="image-overlay">
+    <span class="image-caption">Esuke＝良いスケジュール</span>
   </div>
+</div>
+<br>
 
   <div class="row">
     <div class="col-5">
@@ -65,25 +68,32 @@
 <style>
   .image-container {
     position: relative;
-    display: inline-block;
-    margin-bottom: 30px;
+    overflow: hidden;
+  }
+
+  .image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
 
   .image-caption {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    opacity: 0;
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
+    font-size: 20px;
+    color: #fff;
     padding: 10px;
-    transition: opacity 0.3s;
-    display: inline-block;
-    font-size: 32px;
+    text-align: center;
   }
 
-  .image-container:hover .image-caption {
+  .image-container:hover .image-overlay {
     opacity: 1;
   }
+
 </style>

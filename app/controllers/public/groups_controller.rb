@@ -40,7 +40,7 @@ class Public::GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to group_path(@group)
+      redirect_to groups_path
     else
       render :edit
     end
