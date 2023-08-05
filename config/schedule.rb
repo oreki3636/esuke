@@ -25,6 +25,6 @@
 set :output, 'log/crontab.log'
 set :environment, :production
 
-every 1.day, at: '7:35 am' do
+every :sunday, at: '3:00 pm' do
   rake "points:reset"
 end
