@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row">
     <div class="col-12">
@@ -6,21 +7,21 @@
   </div>
 
   <div class="image-container">
-  <%= image_tag '20230328214242.jpg', style: 'width: 100%; height: auto;' %>
-  <div class="image-overlay">
-    <span class="image-caption">Esuke＝良いスケジュール</span>
+    <%= image_tag '20230328214242.jpg', style: 'width: 100%; height: auto;' %>
+    <div class="image-overlay">
+      <span class="image-caption">Esuke＝良いスケジュール</span>
+    </div>
   </div>
-</div>
-<br>
-
+  <br>
+  <br>
   <div class="row">
-    <div class="col-5">
-      <div class="about-head">
-        <h1 class="headline">Esuke<br>start</h1>
+    <div class="col-lg-5 col-md-12">
+      <div class="about-image">
+        <%= image_tag 'StartLine_image.jpg' ,class: "image" %>
+        <h1 class="about-head">Esuke<br>start</h1>
       </div>
     </div>
-    <div class="col-1"></div>
-    <div class="col-6">
+    <div class="col-lg-7 col-md-12">
       <p class="p-bold">以前の私は新年を迎えるごとにスケジュール張を買い毎年のように３ヶ月坊主の繰り返し。<br>
         そんな私がプログラミングの勉強したいと思い、東京大学大学院修士の友達に勉強の相談したところ１冊のスケジュール帳が届きました。<br>
         中身にはその日のスケジュールと、ToDoリスト、その日の感想や自己肯定感を上げる一言が書いてありました。<br>
@@ -39,10 +40,10 @@
       </p>
     </div>
   </div>
-
-  &nbsp;
+  <br>
+  <br>
   <div class="row">
-    <div class="col-6">
+    <div class="col-lg-7 col-md-12 order-lg-0 order-1">
       <p class="p-bold">真面目な話はここまでにしてEスケの遊び方について簡単な説明をします。<br>
         Eスケはスケジュールを立てることの継続のしやすさが
         今までのスケジュールアプリやスケジュール帳とは違う点です。<br>
@@ -57,9 +58,10 @@
         それでは皆さんとの浸みながら継続していきましょう！
       </p>
     </div>
-    <div class="col-6">
-      <div class="about-head">
-        <h1 class="headline">Esuke<br>play</h1>
+    <div class="col-lg-5 col-md-12 order-lg-1 order-0">
+      <div class="about-image">
+        <%= image_tag "gahag-0118838127-1.jpg", class: "image" %>
+        <h1 class="about-head">Esuke<br>play</h1>
       </div>
     </div>
   </div>
@@ -94,6 +96,31 @@
 
   .image-container:hover .image-overlay {
     opacity: 1;
+  }
+
+  .about-image {
+    height: 100%;
+    position: relative;
+    background-size: cover;
+
+
+  }
+
+  .about-head {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Impact;
+    font-size: 70px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+
   }
 
 </style>
