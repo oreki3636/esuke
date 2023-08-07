@@ -14,6 +14,8 @@
  *= require_self
  */
 
+ @use '~bootstrap/scss/bootstrap';
+
  @import "simple_calendar";
 
 /* 全体共通のスタイル */
@@ -112,4 +114,22 @@ footer{
 
 .link-black {
   color: black;
+}
+
+.simple-calendar {
+  .day {
+    height: 120px;
+  }
+}
+
+.calendar-heading {
+  a {
+    font-size: 20px;
+    color: black;
+  }
+}
+
+.calendar-title {
+    font-size: 30px;
+    font-weight: bold;
 }
