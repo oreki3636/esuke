@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h2 class="title">profile edit</h2>
+      <h2 class="title">profile show</h2>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12 col-lg-5">
-      <%= image_tag @user.get_profile_image(350,350) %>
+      <%= image_tag @user.get_profile_image(350,350),size: "350x350" %>
     </div>
     <div class="col-sm-12 col-lg-7">
       <label>名前</label>
