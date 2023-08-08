@@ -14,7 +14,7 @@
   </div>
   <div class="row">
     <div class="col-md-12 col-lg-5">
-      <%= image_tag @user.get_profile_image(350,350) %>
+      <%= image_tag @user.get_profile_image(350,350),size: "350x350" %>
     </div>
     <div class="col-md-12 col-lg-7">
       <%= form_with model: @user, url: mypage_path do |f| %>
