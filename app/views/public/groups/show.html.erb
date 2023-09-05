@@ -1,67 +1,65 @@
-
-
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <h2><%= @group.name %>(<%= @group.users.count %>人)</h2>
-        </div>
+  <div class="row">
+    <div class="col-12">
+      <h2><%= @group.name %>(<%= @group.users.count %>人)</h2>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <p>グループ説明：<%= @group.introduction %></p>
-        </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>グループ説明：<%= @group.introduction %></p>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <%= form_with url: group_one_word_path(@group), method: :patch do |f| %>
-                <%= f.label :一言 %><br>
-                <%= f.text_field :one_word %>
-                <%= f.submit "送信" %>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <%= form_with url: group_one_word_path(@group), method: :patch do |f| %>
+        <%= f.label :一言 %><br>
+        <%= f.text_field :one_word %>
+        <%= f.submit "送信" %>
+      <% end %>
+    </div>
+    <div class="col-12">
+      <% if @group_user.errors.any? %>
+      　<ul>
+          <% @group_user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ランキング</th>
+            <th>名前</th>
+            <th>ポイント数</th>
+            <th>一言</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user_ranks.each_with_index do |rank, i| %>
+            <tr>
+              <td><%= i + 1 %>位</td>
+              <td><%= link_to rank.name, user_path(rank.id), class: "link-black" %></td>
+              <td><%= rank.points.count %></td>
+              <td><%= @group.group_users.find_by(user_id: rank.id).one_word ||"" %></td>
+              <!--|| "": もしone_wordの値がnil（空）だった場合、空文字列を返す。-->
+            </tr>
             <% end %>
-        </div>
-        <div class="col-12">
-            <% if @group_user.errors.any? %>
-              　 <ul>
-                    <% @group_user.errors.full_messages.each do |message| %>
-                        <li><%= message %></li>
-                    <% end %>
-                </ul>
-            <% end %>
-        </div>
+        </tbody>
+      </table>
     </div>
+  </div>
 
-
-    <div class="row">
-        <div class="col-12">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ランキング</th>
-                        <th>名前</th>
-                        <th>ポイント数</th>
-                        <th>一言</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% @user_ranks.each_with_index do |rank, i| %>
-                        <tr>
-                            <td><%= i + 1 %>位</td>
-                            <td><%= link_to rank.name, user_path(rank.id), class: "link-black" %></td>
-                            <td><%= rank.points.count %></td>
-                            <td><%= @group.group_users.find_by(user_id: rank.id).one_word ||"" %></td>
-                            <!--|| "": もしone_wordの値がnil（空）だった場合、空文字列を返す。-->
-                        </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-12">
-            <%= link_to "Group一覧へ", groups_path, class: "btn btn-dark" %>
-        </div>
-    </div>
+  <div class="row">
+    <div class="col-12">
+      <%= link_to "Group一覧へ", groups_path, class: "btn btn-dark" %>
+      </div>
+  </div>
 </div>
 
 <style>

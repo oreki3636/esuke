@@ -6,12 +6,12 @@
         <%= image_tag 'img_b6aae7c7a00c8125a4896b4aa5bf5e0693973.jpg',class: "top-img" %>
 
         <div class="box">
-          <h3 style="color: white;">時間は有限　可能性は無限　E(良い)スケジュールを！</h3>
+          <h3 style="color: white;">時間は有限<br>可能性は無限<br>E(良い)スケジュールを！</h3>
         </div>
       </div>
 
       <p class="top-bold">白紙のスケジュール帳とはもうお別れ<br>
-        友達や仲間と一緒に<span class="stylish-text">ゲーム感覚でスケジュール帳を書く習慣</span>を身に付けましょう！</p>
+        友達や仲間と一緒に<br><span class="stylish-text">ゲーム感覚で<br>スケジュール帳を<br>書く習慣</span><br>を身に付けましょう！</p>
 
       <% if user_signed_in? %>
       <% elsif admin_signed_in? %>
@@ -35,8 +35,8 @@
   }
 
   .box{
-    display: inline-block;
-    width: 400px;
+    text-align: center;
+    width: 330px;
     background: black;
     position: absolute;
     top: 50%;
