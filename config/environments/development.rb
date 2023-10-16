@@ -1,4 +1,6 @@
-require "active_support/core_ext/integer/time"
+# frozen_string_literal: true
+
+require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -73,6 +75,6 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
-  config.hosts << "39eb1253fa4e44778b53b48a29083d61.vfs.cloud9.ap-northeast-1.amazonaws.com"
+  config.hosts << '39eb1253fa4e44778b53b48a29083d61.vfs.cloud9.ap-northeast-1.amazonaws.com'
   config.active_job.queue_adapter = :inline
 end

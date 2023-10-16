@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Group < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :users, through: :group_users
@@ -8,7 +10,6 @@ class Group < ApplicationRecord
   # imageを呼び出した時に中身が空だったら、assets/images/no_image.jpgを呼び出す
 
   def get_image
-    (image.attached?) ? image : 'no_image.jpg'
+    image.attached? ? image : 'no_image.jpg'
   end
-
 end

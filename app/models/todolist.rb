@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 class Todolist < ApplicationRecord
   # has_many :points, dependent: :destroy
   has_many :points, dependent: :destroy
-
 
   belongs_to :user
 

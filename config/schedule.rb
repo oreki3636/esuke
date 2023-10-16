@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 # Use this file to easily define all of your cron jobs.
 #
@@ -26,5 +27,5 @@ set :output, 'log/crontab.log'
 set :environment, :production
 
 every :sunday, at: '3:00 pm' do
-  rake "points:reset"
+  rake 'points:reset'
 end

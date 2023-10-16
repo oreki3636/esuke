@@ -1,4 +1,4 @@
-
+# frozen_string_literal: true
 
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   validates :password, length: { minimum: 6 }, if: :password_required?
   validates :name, presence: true
-  validates :telephone_number ,presence: true
+  validates :telephone_number, presence: true
 
   has_one_attached :profile_image
 
@@ -25,12 +25,11 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-
   def active_for_authentication?
     super && !is_deleted
   end
 
-  #パスワードが必要な場合にのみバリデーションが実行されるようになる
+  # パスワードが必要な場合にのみバリデーションが実行されるようになる
   def password_required?
     new_record? || password.present?
   end

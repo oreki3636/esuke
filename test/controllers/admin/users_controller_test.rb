@@ -1,8 +1,12 @@
-require "test_helper"
+# frozen_string_literal: true
 
-class Admin::UsersControllerTest < ActionDispatch::IntegrationTest
-  test "should get show" do
-    get admin_users_show_url
-    assert_response :success
+require 'test_helper'
+
+module Admin
+  class UsersControllerTest < ActionDispatch::IntegrationTest
+    test 'should get show' do
+      get admin_users_show_url
+      assert_response :success
+    end
   end
 end
