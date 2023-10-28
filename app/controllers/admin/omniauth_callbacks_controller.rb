@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
-module Admin
-  class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  class Admin::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     # You should configure your model like this:
     # devise :omniauthable, omniauth_providers: [:twitter]
 
@@ -29,4 +27,3 @@ module Admin
     #   super(scope)
     # end
   end
-end

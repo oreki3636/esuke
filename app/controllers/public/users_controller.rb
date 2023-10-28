@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
-module Public
-  class UsersController < ApplicationController
+  class Public::UsersController < ApplicationController
     def show
       @user = User.find(params[:id])
     end
@@ -54,4 +52,3 @@ module Public
       params.require(:user).permit(:name, :introduction, :email, :telephone_number, :profile_image)
     end
   end
-end

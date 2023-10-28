@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
-module Public
-  class SessionsController < Devise::SessionsController
+  class Public::SessionsController < Devise::SessionsController
     def after_sign_in_path_for(_resource)
       mypage_path
     end
@@ -53,4 +51,3 @@ module Public
     #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
     # end
   end
-end

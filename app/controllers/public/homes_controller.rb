@@ -1,7 +1,4 @@
 # frozen_string_literal: true
-
-module Public
-  class HomesController < ApplicationController
+  class Public::HomesController < ApplicationController
     def top; end
   end
-end

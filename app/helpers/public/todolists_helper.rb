@@ -1,6 +1,3 @@
 # frozen_string_literal: true
-
-module Public
-  module TodolistsHelper
-  end
+module Public::TodolistsHelper
 end

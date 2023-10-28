@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
-module Public
-  class RegistrationsController < Devise::RegistrationsController
+  class Public::RegistrationsController < Devise::RegistrationsController
     before_action :configure_permitted_parameters, if: :devise_controller?
 
     def after_sign_in_path_for(_resource)
@@ -77,4 +75,3 @@ module Public
     #   super(resource)
     # end
   end
-end

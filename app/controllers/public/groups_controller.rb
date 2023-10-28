@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
-module Public
-  class GroupsController < ApplicationController
+  class Public::GroupsController < ApplicationController
     def index
       @groups = current_user.groups
     end
@@ -72,4 +70,3 @@ module Public
       params.require(:group).permit(:name, :introduction, :image, :one_word)
     end
   end
-end

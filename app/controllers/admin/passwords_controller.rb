@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
-module Admin
-  class PasswordsController < Devise::PasswordsController
+  class Admin::PasswordsController < Devise::PasswordsController
     # GET /resource/password/new
     # def new
     #   super
@@ -33,4 +31,3 @@ module Admin
     #   super(resource_name)
     # end
   end
-end

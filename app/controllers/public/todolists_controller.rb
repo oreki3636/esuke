@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
-module Public
-  class TodolistsController < ApplicationController
+  class Public::TodolistsController < ApplicationController
     def new
       @todolist = Todolist.new
     end
@@ -46,4 +44,3 @@ module Public
             )
     end
   end
-end

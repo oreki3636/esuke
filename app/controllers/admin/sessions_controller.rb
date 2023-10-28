@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
-module Admin
-  class SessionsController < Devise::SessionsController
+  class Admin::SessionsController < Devise::SessionsController
     def after_sign_in_path_for(_resource)
       admin_root_path
     end
@@ -34,4 +32,3 @@ module Admin
     #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
     # end
   end
-end

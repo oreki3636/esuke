@@ -1,6 +1,3 @@
 # frozen_string_literal: true
-
-module Admin
-  module HomesHelper
-  end
+module Admin::HomesHelper
 end

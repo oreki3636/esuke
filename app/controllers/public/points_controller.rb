@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-
-module Public
-  class PointsController < ApplicationController
+  class Public::PointsController < ApplicationController
     def index
       @points = current_user.points
       @todolists = current_user.todolists.order(created_at: :desc)
@@ -11,4 +9,3 @@ module Public
 
     def destroy; end
   end
-end
